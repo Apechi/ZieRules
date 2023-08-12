@@ -4,7 +4,7 @@ import android.app.Application
 
 class MyApplication : Application() {
     companion object {
-        const val BASE_URL = "https://c225-180-244-128-53.ngrok-free.app/api"
-        const val URL = "https://c225-180-244-128-53.ngrok-free.app/"
+        const val BASE_URL = "https://zierules.fajarms.com/api"
+        const val URL = "https://zierules.fajarms.com/"
     }
 }

@@ -9,29 +9,58 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:weightSum="10"
         android:padding="10dp"
         android:background="@drawable/bottom_border_line"
         android:orientation="horizontal">
 
-        <com.google.android.material.textview.MaterialTextView
+        <LinearLayout
             android:layout_width="wrap_content"
+            android:layout_weight="7"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:id="@+id/nama_pelanggaran"
             android:textStyle="bold"
             android:textColor="#030303"
-            android:text=""
+            android:text="Merokok"
             />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ditulis Oleh: Nama Guru"
+            android:maxWidth="0dp"
+            android:id="@+id/nama_guru"
+            />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:maxWidth="0dp"
+                android:layout_height="wrap_content"
+                android:text="Karena: Alasan"/>
+
+
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
             android:layout_height="wrap_content"
             android:textAlignment="textEnd"
             android:id="@+id/point_pelanggaran"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#DC3545"
-            android:text=""
+            android:text="100"
             />
 
 

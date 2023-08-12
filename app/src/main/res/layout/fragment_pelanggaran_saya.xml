@@ -25,12 +25,13 @@
             android:textColor="#030303"
             android:layout_gravity="center"
             android:textStyle="bold"
-            android:text="Total Point Saya:"/>
+            android:text="Total Point Pelanggaran:"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="120"
+            android:text=""
+            android:id="@+id/total_point"
             android:textSize="30dp"
             android:textStyle="bold"
             android:textColor="#DC3545"
