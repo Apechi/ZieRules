@@ -2,7 +2,7 @@ package com.example.zierules.pelanggaran.data
 
 
 data class PelanggaranSayaData(
-    val total_point: Int,
+    val totalPoint: Int,
     val dataViolation: ArrayList<DataViolation>
 )
 
