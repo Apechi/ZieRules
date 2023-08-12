@@ -3,7 +3,7 @@ package com.example.zierules.pelanggaran.data
 
 data class PelanggaranSayaData(
     val total_point: Int,
-    val data_violations: ArrayList<DataViolation>
+    val dataViolation: ArrayList<DataViolation>
 )
 
 data class DataViolation(

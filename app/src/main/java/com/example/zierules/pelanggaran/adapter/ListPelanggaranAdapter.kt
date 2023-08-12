@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zierules.databinding.LayoutItemListpelanggaranBinding
+import com.example.zierules.pelanggaran.data.ListDataViolation
 import com.example.zierules.pelanggaran.data.ListPelanggaranData
 
 class ListPelanggaranAdapter(
-    private  var dataListPelanggaran: ArrayList<ListPelanggaranData>) :
+    private  var dataListPelanggaran: ArrayList<ListDataViolation>) :
     RecyclerView.Adapter<ListPelanggaranAdapter.MyViewHolder>() {
 
    inner class MyViewHolder(private val binding: LayoutItemListpelanggaranBinding) : RecyclerView.ViewHolder(binding.root) {

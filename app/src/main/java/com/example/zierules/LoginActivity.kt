@@ -65,10 +65,8 @@ class LoginActivity : AppCompatActivity() {
         val jsonRequest = object : JsonObjectRequest(Request.Method.POST, url, body,
             { response ->
                 val jsonObject = JsonParser.parseString(response.toString()).asJsonObject
-                val status = jsonObject.get("status").asInt
                 val message = jsonObject.get("message").asString
                 try {
-                    if(status == 200) {
                         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
                         val token = jsonObject.get("token").asString
                         sharedPref.put(Constant.PREF_NIS, nis)
@@ -76,9 +74,6 @@ class LoginActivity : AppCompatActivity() {
                         sharedPref.put(Constant.PREF_TOKEN, token)
                         sharedPref.put(Constant.PREF_IS_LOGIN, true)
                         pindahIntent()
-                    } else if(status == 404){
-                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-                    }
                 } catch (e: Exception) {
                     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 }

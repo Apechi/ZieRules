@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.zierules.databinding.FragmentMenuBinding
 import com.example.zierules.pelanggaran.PelanggaranActivity
+import com.example.zierules.prestasi.PrestasiActivity
 
 class MenuFragment : Fragment() {
 
@@ -34,15 +35,21 @@ class MenuFragment : Fragment() {
             changeActivity(0)
         }
 
+        binding.toPrestasi.setOnClickListener {
+            changeActivity(1)
+        }
+
 
         return root
 
     }
 
     private fun changeActivity(menu: Int) {
-        val pelanggaranIntent = Intent(requireContext(), PelanggaranActivity::class.java)
+
         when(menu) {
-            0 -> startActivity(pelanggaranIntent)
+            0 -> startActivity(Intent(requireContext(), PelanggaranActivity::class.java))
+            1 -> startActivity(Intent(requireContext(), PrestasiActivity::class.java))
+
         }
     }
 

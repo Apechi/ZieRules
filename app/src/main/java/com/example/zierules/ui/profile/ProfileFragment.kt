@@ -23,6 +23,7 @@ import com.example.zierules.databinding.FragmentProfileBinding
 import com.example.zierules.helper.Constant
 import com.example.zierules.helper.PreferenceHelper
 import com.example.zierules.json.StudentData
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
@@ -39,6 +40,7 @@ class ProfileFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -54,7 +56,15 @@ class ProfileFragment : Fragment() {
         sharePref = PreferenceHelper(requireContext())
 
         binding.txtLogout.setOnClickListener{
-            logout()
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Anda Yakin Ingin Logout?")
+                .setPositiveButton("Ya") {dialog, which ->
+                    logout()
+                }
+                .setNeutralButton("Tidak") {dialog, which ->
+
+                }
+                .show()
         }
 
         return root
@@ -83,9 +93,9 @@ class ProfileFragment : Fragment() {
                     var role = studentData.student.role
                     val nama = studentData.student.name
                     val kelas = studentData.student.`class`
-                    val jml_pelanggaran = studentData.dataViolations
-                    val jml_prestasi = studentData.dataAchievements
-                    val jml_tugas = studentData.dataTasks
+                    val jml_pelanggaran = studentData.student.dataViolations
+                    val jml_prestasi = studentData.student.dataAchievements
+                    val jml_tugas = studentData.student.dataTasks
                     val image = "${MyApplication.URL}${image_profile}"
                     role = role.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
                     val url_image = image.replace("public", "storage")

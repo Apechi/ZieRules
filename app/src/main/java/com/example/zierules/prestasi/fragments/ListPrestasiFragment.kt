@@ -1,7 +1,6 @@
-package com.example.zierules.pelanggaran.fragments
+package com.example.zierules.prestasi.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,70 +8,67 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.zierules.MyApplication
 import com.example.zierules.R
-import com.example.zierules.databinding.FragmentPelanggaranSayaBinding
+import com.example.zierules.databinding.FragmentListPrestasiBinding
+import com.example.zierules.databinding.LayoutItemListprestasiBinding
 import com.example.zierules.helper.Constant
 import com.example.zierules.helper.PreferenceHelper
 import com.example.zierules.pelanggaran.adapter.DataPelanggaranSayaAdapter
-import com.example.zierules.pelanggaran.adapter.ListPelanggaranAdapter
 import com.example.zierules.pelanggaran.data.PelanggaranSayaData
+import com.example.zierules.prestasi.adapter.ListPrestasiAdapter
+import com.example.zierules.prestasi.data.ListPrestasi
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 
-class PelanggaranSayaFragment : Fragment() {
+class ListPrestasiFragment : Fragment() {
 
-    lateinit var binding: FragmentPelanggaranSayaBinding
+    lateinit var recycleView: RecyclerView
     lateinit var sharedPref: PreferenceHelper
-    lateinit private var recycleView: RecyclerView
+    lateinit var binding: FragmentListPrestasiBinding
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentPelanggaranSayaBinding.inflate(inflater, container, false)
+
+        binding = FragmentListPrestasiBinding.inflate(inflater, container, false)
 
         sharedPref = PreferenceHelper(requireContext())
-
-        recycleView = binding.rvPelanggaran
+        recycleView = binding.rvPrestasi
 
         binding.swipeToRefresh.setOnRefreshListener {
-            getDataPelanggaranSaya()
+            getListPrestasi()
             binding.swipeToRefresh.isRefreshing = false
         }
 
         return binding.root
     }
 
-
     override fun onStart() {
         super.onStart()
-        getDataPelanggaranSaya()
+        getListPrestasi()
     }
 
-    private fun getDataPelanggaranSaya() {
+
+    private fun getListPrestasi() {
         val queue = Volley.newRequestQueue(requireContext())
-        val url = "${MyApplication.BASE_URL}/student/data/violation"
+        val url = "${MyApplication.BASE_URL}/student/list/achievment"
         val jsonObjectRequest = object : JsonObjectRequest(
             Method.GET, url, null,
             { response ->
                 try {
                     val gson = Gson()
-                    val DataPelanggaranSaya = gson.fromJson(response.toString(), PelanggaranSayaData::class.java)
-
-                    val adapter = DataPelanggaranSayaAdapter(DataPelanggaranSaya.dataViolation)
+                    val listPrestasi = gson.fromJson(response.toString(), ListPrestasi::class.java)
+                    val adapter = ListPrestasiAdapter(listPrestasi.achievement)
                     recycleView.layoutManager = LinearLayoutManager(requireContext())
                     recycleView.adapter = adapter
                     adapter.notifyDataSetChanged()
-
-                    //PUT POINT DATA TO UI
-                    binding.totalPoint.text = DataPelanggaranSaya.total_point.toString()
                 } catch (e: Exception) {
                     Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
                 }
@@ -89,6 +85,11 @@ class PelanggaranSayaFragment : Fragment() {
         queue.add(jsonObjectRequest)
     }
 
+    fun parseJsonArray(jsonArray: String): ArrayList<ListPrestasi> {
+        val gson = Gson()
+        val typeToken = object : TypeToken<ArrayList<ListPrestasi>>() {}.type
+        return gson.fromJson(jsonArray, typeToken)
+    }
+
 
 }
-

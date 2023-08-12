@@ -21,6 +21,7 @@ import com.example.zierules.databinding.FragmentListPelanggaranBinding
 import com.example.zierules.helper.Constant
 import com.example.zierules.helper.PreferenceHelper
 import com.example.zierules.pelanggaran.adapter.ListPelanggaranAdapter
+import com.example.zierules.pelanggaran.data.ListDataViolation
 import com.example.zierules.pelanggaran.data.ListPelanggaranData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -35,7 +36,7 @@ class ListPelanggaranFragment : Fragment() {
     lateinit private var recycleView: RecyclerView
     lateinit private var adapter: ListPelanggaranAdapter
 
-    private var pelanggaranList = ArrayList<ListPelanggaranData>()
+    private var pelanggaranList = ArrayList<ListDataViolation>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,11 +70,12 @@ class ListPelanggaranFragment : Fragment() {
     private fun getListPelanggaranData() {
         val queue = Volley.newRequestQueue(requireContext())
         val url = "${MyApplication.BASE_URL}/student/list/violation"
-        val jsonObjectRequest = object : JsonArrayRequest(Request.Method.GET, url, null,
+        val jsonObjectRequest = object : JsonObjectRequest(Request.Method.GET, url, null,
             { response ->
                 try {
-                    val listPelanggaran = parseJson(response.toString())
-                    val adapter = ListPelanggaranAdapter(listPelanggaran)
+                    val gson = Gson()
+                    val listPelanggaran =  gson.fromJson(response.toString(), ListPelanggaranData::class.java)
+                    val adapter = ListPelanggaranAdapter(listPelanggaran.dataViolation)
                     Log.d("tes", listPelanggaran.toString())
                     recycleView.layoutManager = LinearLayoutManager(requireContext())
                     recycleView.adapter = adapter
@@ -95,12 +97,7 @@ class ListPelanggaranFragment : Fragment() {
 
     }
 
-    private fun parseJson(jsonString: String): ArrayList<ListPelanggaranData> {
-        val gson = Gson()
-        val listPelanggaranDataArray = object: TypeToken<ArrayList<ListPelanggaranData>>(){}.type
-        val pelanggaranData: ArrayList<ListPelanggaranData> = gson.fromJson(jsonString, listPelanggaranDataArray)
-        return ArrayList(pelanggaranData.toList())
-    }
+
 
 
 

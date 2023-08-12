@@ -4,47 +4,51 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".pelanggaran.fragments.ListPelanggaranFragment">
+    tools:context=".prestasi.fragments.PrestasiSayaFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/bottom_border_line"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="15dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="#030303"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:text="Total Point Prestasi:"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/total_point"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textColor="#50BC54"
+                android:gravity="center"
+                android:layout_gravity="center"
+
+                />
+        </LinearLayout>
 
 
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:background="@drawable/bottom_border_line"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:id="@+id/nama_pelanggaran"
-                android:textStyle="bold"
-                android:textColor="#030303"
-                android:text="Pelanggaran"
-                />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="textEnd"
-                android:id="@+id/point_pelanggaran"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="#DC3545"
-                android:text="Point"
-                />
-
-
-
-        </LinearLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
@@ -56,7 +60,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rv_pelanggaran"
+                android:id="@+id/rv_prestasi"
                 />
 
 
@@ -64,6 +68,5 @@
 
 
     </LinearLayout>
-
 
 </LinearLayout>
