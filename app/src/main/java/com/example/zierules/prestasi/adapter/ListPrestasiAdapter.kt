@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zierules.databinding.LayoutItemListprestasiBinding
-import com.example.zierules.prestasi.data.DataAchievementSaya
+
+import com.example.zierules.prestasi.data.DataListPrestasi
 import com.example.zierules.prestasi.data.ListPrestasi
 
 class ListPrestasiAdapter
-    (private var dataListPrestasi: ArrayList<DataAchievementSaya>) : RecyclerView.Adapter<ListPrestasiAdapter.ViewHolder>() {
+    (private var dataListPrestasi: ArrayList<DataListPrestasi>) : RecyclerView.Adapter<ListPrestasiAdapter.ViewHolder>() {
 
         inner class ViewHolder(private val binding: LayoutItemListprestasiBinding) : RecyclerView.ViewHolder(binding.root) {
             val nama = binding.namaPrestasi

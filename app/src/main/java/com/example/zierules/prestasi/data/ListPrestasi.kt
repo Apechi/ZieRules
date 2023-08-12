@@ -1,10 +1,10 @@
 package com.example.zierules.prestasi.data
 
 data class ListPrestasi(
-   val achievement: ArrayList<DataAchievementSaya>
+   val achievments: ArrayList<DataListPrestasi>
 )
 
-data class DataAchievementSaya(
+data class DataListPrestasi(
     val id: Int,
     val name: String,
     val point: Int,

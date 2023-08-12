@@ -65,7 +65,7 @@ class ListPrestasiFragment : Fragment() {
                 try {
                     val gson = Gson()
                     val listPrestasi = gson.fromJson(response.toString(), ListPrestasi::class.java)
-                    val adapter = ListPrestasiAdapter(listPrestasi.achievement)
+                    val adapter = ListPrestasiAdapter(listPrestasi.achievments)
                     recycleView.layoutManager = LinearLayoutManager(requireContext())
                     recycleView.adapter = adapter
                     adapter.notifyDataSetChanged()
