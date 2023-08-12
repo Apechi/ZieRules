@@ -15,6 +15,7 @@ class DataPelanggaranSayaAdapter(
         var nama_pelanggaran = binding.namaPelanggaran
         var nama_guru = binding.namaGuru
         var point = binding.pointPelanggaran
+        var deskripsi = binding.deskripsi
 
     }
 
@@ -33,6 +34,6 @@ class DataPelanggaranSayaAdapter(
         holder.nama_pelanggaran.text = listPelanggaranSaya.name
         holder.nama_guru.text = "Oleh: ${listPelanggaranSaya.teacher}"
         holder.point.text = listPelanggaranSaya.point.toString()
-
+        holder.deskripsi.text = "Deskripsi: ${listPelanggaranSaya.description.toString()}"
     }
 }

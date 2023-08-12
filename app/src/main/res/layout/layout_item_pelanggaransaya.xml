@@ -28,13 +28,13 @@
             android:id="@+id/nama_pelanggaran"
             android:textStyle="bold"
             android:textColor="#030303"
-            android:text="Merokok"
+
             />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ditulis Oleh: Nama Guru"
+
             android:maxWidth="0dp"
             android:id="@+id/nama_guru"
             />
@@ -43,8 +43,9 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:maxWidth="0dp"
+                android:id="@+id/deskripsi"
                 android:layout_height="wrap_content"
-                android:text="Karena: Alasan"/>
+                />
 
 
 
@@ -60,7 +61,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#DC3545"
-            android:text="100"
+
             />
 
 
