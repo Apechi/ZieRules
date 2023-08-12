@@ -67,7 +67,7 @@ class PrestasiSayaFragment : Fragment() {
                     adapter.notifyDataSetChanged()
 
                     //PUT POINT DATA TO UI
-                    binding.totalPoint.text = DataPrestasiSaya.total_point.toString()
+                    binding.totalPoint.text = DataPrestasiSaya.totalPoint.toString()
                 } catch (e: Exception) {
                     Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
                 }

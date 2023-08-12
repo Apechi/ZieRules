@@ -1,7 +1,7 @@
 package com.example.zierules.prestasi.data
 
 data class PrestasiSaya(
-    var total_point: Int,
+    var totalPoint: Int,
     var dataAchievments: ArrayList<DataAchievement>
 )
 
