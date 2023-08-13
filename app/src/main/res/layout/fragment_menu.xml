@@ -9,61 +9,106 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:clickable="true"
-        android:id="@+id/to_pelanggaran"
-        android:background="@drawable/bottom_border_line"
-        android:layout_height="wrap_content">
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lihat Pelanggaran"
-            android:textColor="#FF6B6B"
-            android:textSize="24sp"
-            android:textStyle="bold"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
             android:padding="20dp"
-            />
+            android:clickable="true"
+            android:id="@+id/toPelanggaran"
+            android:background="@drawable/pelanggaran_rounded"
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:id="@+id/to_prestasi"
-        android:clickable="true"
-        android:background="@drawable/bottom_border_line"
-        android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/baseline_do_not_disturb_24" />
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Lihat Pelanggaran Saya"
+
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lihat Prestasi"
+            android:layout_marginTop="10dp"
+            android:weightSum="12"
+            android:orientation="horizontal">
 
-            android:textColor="#50BC54"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:padding="20dp"
-            />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="6"
+                android:clickable="true"
+                android:id="@+id/toPrestasi"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:elevation="10dp"
+                android:background="@drawable/prestasi_rounded"
+                android:layout_height="wrap_content">
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:clickable="true"
-        android:id="@+id/to_tugas"
-        android:background="@drawable/bottom_border_line"
-        android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/baseline_star_24"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lihat Tugas"
-                android:textColor="#477CAC"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:padding="20dp"
-            />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lihat Prestasi Saya"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
 
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="8dp"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="6"
+                android:clickable="true"
+                android:id="@+id/toTugas"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/tugas_rounded"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/baseline_task_24"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lihat Tugas Saya"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
 
     </LinearLayout>
