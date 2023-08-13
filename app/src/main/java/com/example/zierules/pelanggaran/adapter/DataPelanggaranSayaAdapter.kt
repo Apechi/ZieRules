@@ -16,7 +16,7 @@ class DataPelanggaranSayaAdapter(
         var nama_guru = binding.namaGuru
         var point = binding.pointPelanggaran
         var deskripsi = binding.deskripsi
-
+        var tanggal = binding.tanggal
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,5 +35,6 @@ class DataPelanggaranSayaAdapter(
         holder.nama_guru.text = "Oleh: ${listPelanggaranSaya.teacher}"
         holder.point.text = listPelanggaranSaya.point.toString()
         holder.deskripsi.text = "Deskripsi: ${listPelanggaranSaya.description.toString()}"
+        holder.tanggal.text = listPelanggaranSaya.date.toString()
     }
 }

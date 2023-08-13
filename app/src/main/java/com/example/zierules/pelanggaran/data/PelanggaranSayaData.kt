@@ -10,6 +10,7 @@ data class DataViolation(
     val id: Int,
     val name: String,
     val point: Int,
+    val date: String,
     val teacher: String,
     val description: String
 )

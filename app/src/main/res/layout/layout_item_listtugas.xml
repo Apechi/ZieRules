@@ -18,20 +18,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:id="@+id/nama_pelanggaran"
+            android:id="@+id/nama_tugas"
             android:textStyle="bold"
             android:textColor="#030303"
-            android:text=""
-            />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
-            android:id="@+id/point_pelanggaran"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#DC3545"
             android:text=""
             />
 

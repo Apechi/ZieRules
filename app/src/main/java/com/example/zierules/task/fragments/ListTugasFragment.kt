@@ -1,4 +1,4 @@
-package com.example.zierules.prestasi.fragments
+package com.example.zierules.task.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,42 +8,38 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.zierules.MyApplication
 import com.example.zierules.R
 import com.example.zierules.databinding.FragmentListPrestasiBinding
-import com.example.zierules.databinding.LayoutItemListprestasiBinding
+import com.example.zierules.databinding.FragmentListTaskBinding
 import com.example.zierules.helper.Constant
 import com.example.zierules.helper.PreferenceHelper
-import com.example.zierules.pelanggaran.adapter.DataPelanggaranSayaAdapter
-import com.example.zierules.pelanggaran.data.PelanggaranSayaData
 import com.example.zierules.prestasi.adapter.ListPrestasiAdapter
 import com.example.zierules.prestasi.data.ListPrestasi
+import com.example.zierules.task.adapter.ListTugasAdapter
+import com.example.zierules.task.data.ListTugasData
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 
-class ListPrestasiFragment : Fragment() {
+class ListTugasFragment : Fragment() {
 
-    lateinit var recycleView: RecyclerView
     lateinit var sharedPref: PreferenceHelper
-    lateinit var binding: FragmentListPrestasiBinding
-
+    lateinit var recyclerView: RecyclerView
+    lateinit var binding: FragmentListTaskBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        binding = FragmentListPrestasiBinding.inflate(inflater, container, false)
+        binding = FragmentListTaskBinding.inflate(inflater, container, false)
 
         sharedPref = PreferenceHelper(requireContext())
-        recycleView = binding.rvPrestasi
+        recyclerView = binding.rvTugas
 
         binding.swipeToRefresh.setOnRefreshListener {
-            getListPrestasi()
+            getListTugas()
             binding.swipeToRefresh.isRefreshing = false
         }
 
@@ -52,22 +48,21 @@ class ListPrestasiFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        getListPrestasi()
+        getListTugas()
     }
 
-
-    private fun getListPrestasi() {
+    private fun getListTugas() {
         val queue = Volley.newRequestQueue(requireContext())
-        val url = "${MyApplication.BASE_URL}/student/list/achievment"
+        val url = "${MyApplication.BASE_URL}/student/list/task"
         val jsonObjectRequest = object : JsonObjectRequest(
             Method.GET, url, null,
             { response ->
                 try {
                     val gson = Gson()
-                    val listPrestasi = gson.fromJson(response.toString(), ListPrestasi::class.java)
-                    val adapter = ListPrestasiAdapter(listPrestasi.achievments)
-                    recycleView.layoutManager = LinearLayoutManager(requireContext())
-                    recycleView.adapter = adapter
+                    val listTugas = gson.fromJson(response.toString(), ListTugasData::class.java)
+                    val adapter = ListTugasAdapter(listTugas.dataTask)
+                    recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                    recyclerView.adapter = adapter
                     adapter.notifyDataSetChanged()
                 } catch (e: Exception) {
                     Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
@@ -84,6 +79,8 @@ class ListPrestasiFragment : Fragment() {
         }
         queue.add(jsonObjectRequest)
     }
+
+
 
 
 

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.zierules.databinding.FragmentMenuBinding
 import com.example.zierules.pelanggaran.PelanggaranActivity
 import com.example.zierules.prestasi.PrestasiActivity
+import com.example.zierules.task.TaskActivity
 
 class MenuFragment : Fragment() {
 
@@ -39,6 +40,10 @@ class MenuFragment : Fragment() {
             changeActivity(1)
         }
 
+        binding.toTugas.setOnClickListener {
+            changeActivity(2)
+        }
+
 
         return root
 
@@ -49,6 +54,7 @@ class MenuFragment : Fragment() {
         when(menu) {
             0 -> startActivity(Intent(requireContext(), PelanggaranActivity::class.java))
             1 -> startActivity(Intent(requireContext(), PrestasiActivity::class.java))
+            2 -> startActivity(Intent(requireContext(), TaskActivity::class.java))
 
         }
     }
