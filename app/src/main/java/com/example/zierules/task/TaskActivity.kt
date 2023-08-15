@@ -9,7 +9,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class TaskActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityTaskBinding
-    var tabTitle = arrayOf("Tugas Saya", "List Tugas")
+    var tabTitle = arrayOf("Tugas Saya")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

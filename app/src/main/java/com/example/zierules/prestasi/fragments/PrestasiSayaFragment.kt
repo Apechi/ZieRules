@@ -49,6 +49,7 @@ class PrestasiSayaFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         getDataPrestasiSaya()
+
     }
 
     private fun getDataPrestasiSaya() {

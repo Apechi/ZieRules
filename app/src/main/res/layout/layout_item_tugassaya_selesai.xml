@@ -5,8 +5,6 @@
     android:layout_margin="10dp"
     android:background="@drawable/card_style"
     android:elevation="5dp"
-    android:backgroundTint="@color/blue_smakzei"
-
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -29,18 +27,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:maxWidth="0dp"
-
                 android:text="Testing"
                 android:id="@+id/nama_tugas"
                 android:textStyle="bold"
-                android:textColor="@color/white"
+                android:textColor="#030303"
 
                 />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:maxWidth="0dp"
-                android:textColor="@color/white"
                 android:text="12 RPL 1"
                 android:id="@+id/kelas"
                 android:layout_height="wrap_content"
@@ -50,31 +46,53 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:maxWidth="0dp"
+                android:text="Sudah mampu melaksanakan tugas"
                 android:id="@+id/deskripsi"
-                android:textColor="@color/white"
-                android:text="Ada Tugasnya"
+                android:layout_height="wrap_content"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:maxWidth="0dp"
+                android:id="@+id/teacher"
+                android:text="Diterima Oleh: Sarah Siti Sumaerah"
                 android:layout_height="wrap_content"
                 />
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
 
 
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:text="12/12/2023"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:id="@+id/date"
+            android:textStyle="bold"
+            android:maxWidth="0dp"
+            />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:id="@+id/finished"
+            android:textColor="#50BC54"
+            android:text="Selesai"
+            android:textStyle="bold"
+            android:maxWidth="0dp"
+            />
 
         </LinearLayout>
 
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="0dp"
-            android:layout_weight="4"
-            android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
-            android:text="Belum Selesai"
-            android:textColor="@color/white"
-            android:id="@+id/result"
-            android:textStyle="bold"
-            android:maxWidth="0dp"
-            />
 
 
 

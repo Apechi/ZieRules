@@ -11,14 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.zierules.MyApplication
-import com.example.zierules.R
-import com.example.zierules.databinding.FragmentListTaskBinding
 import com.example.zierules.databinding.FragmentListTugasSayaBinding
 import com.example.zierules.helper.Constant
 import com.example.zierules.helper.PreferenceHelper
-import com.example.zierules.task.adapter.ListTugasAdapter
 import com.example.zierules.task.adapter.ListTugasSayaAdapter
-import com.example.zierules.task.data.ListTugasData
+import com.example.zierules.task.data.DataTaskSaya
 import com.example.zierules.task.data.ListTugasSaya
 import com.google.gson.Gson
 
@@ -60,12 +57,18 @@ class ListTugasSayaFragment : Fragment() {
                 try {
                     val gson = Gson()
                     val listTugasSaya = gson.fromJson(response.toString(), ListTugasSaya::class.java)
+                    val dataTugasSaya = DataTaskSaya::class.java
                     val adapter = ListTugasSayaAdapter(listTugasSaya.dataTask)
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView.adapter = adapter
                     adapter.notifyDataSetChanged()
-
-                    binding.totalTugas.text = listTugasSaya.dataTask.size.toString()
+                    var tugasSelesai: Int = 0
+                    for (i in listTugasSaya.dataTask) {
+                        if (i.finished) {
+                            tugasSelesai++
+                        }
+                    }
+                    binding.totalTugas.text = tugasSelesai.toString()
                 } catch (e: Exception) {
                     Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
                 }
