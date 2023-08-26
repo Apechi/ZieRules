@@ -70,11 +70,11 @@ class ListPrestasiFragment : Fragment() {
                     recycleView.adapter = adapter
                     adapter.notifyDataSetChanged()
                 } catch (e: Exception) {
-                    Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
                 }
             },
             { error ->
-                Toast.makeText(requireContext(), error.toString(), Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), error.toString(), Toast.LENGTH_SHORT).show()
             }) {
             override fun getHeaders(): MutableMap<String, String> {
                 val headers = HashMap<String, String>()

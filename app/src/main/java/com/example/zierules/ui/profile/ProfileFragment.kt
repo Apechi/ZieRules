@@ -118,6 +118,7 @@ class ProfileFragment : Fragment() {
                     val jml_pelanggaran = studentData.student.dataViolations
                     val jml_prestasi = studentData.student.dataAchievements
                     val jml_tugas = studentData.student.dataTasks
+                    val code = studentData.student.code
                     val image = "${MyApplication.URL}${image_profile}"
                     role = role.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
                     val url_image = image.replace("public", "storage")
@@ -133,12 +134,13 @@ class ProfileFragment : Fragment() {
                     binding.txtPrestasi.text =  jml_prestasi.toString()
                     binding.txtTugas.text = jml_tugas.toString()
                     //Turn NIS into QR Code
-                    val qrCodeBitmap = getQrCodeBitmap(nis.toString())
+                    val qrCodeBitmap = getQrCodeBitmap(code)
                     binding.QRNis.setImageBitmap(qrCodeBitmap)
 
                     //PUT DATA TO CACHE
                     sharePref.put(Constant.PREF_SISWA_PP, url_image)
                     sharePref.put(Constant.PREF_SISWA_NAMA, nama)
+                    sharePref.put(Constant.PREF_SISWA_CODE, code)
                     sharePref.put(Constant.PREF_SISWA_ROLE, role)
                     sharePref.put(Constant.PREF_SISWA_KELAS, kelas)
                     sharePref.put(Constant.PREF_SISWA_PELANGGARAN, jml_pelanggaran.toString())
@@ -148,12 +150,12 @@ class ProfileFragment : Fragment() {
                     sharePref.put(Constant.PREF_IS_FETCHED, true)
 
                 } catch (e: Exception) {
-                    Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
                     sharePref.put(Constant.PREF_IS_FETCHED, false)
                 }
             },
             { error ->
-                Toast.makeText(requireContext(), error.toString(), Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), error.toString(), Toast.LENGTH_SHORT).show()
                 sharePref.put(Constant.PREF_IS_FETCHED, false)
             }) {
             override fun getHeaders(): MutableMap<String, String> {
@@ -179,7 +181,7 @@ class ProfileFragment : Fragment() {
         binding.txtPrestasi.text =  sharePref.getString(Constant.PREF_SISWA_PRESTASI)
         binding.txtTugas.text = sharePref.getString(Constant.PREF_SISWA_TUGAS)
         //Turn NIS into QR Code
-        val qrCodeBitmap = getQrCodeBitmap(sharePref.getString(Constant.PREF_NIS).toString())
+        val qrCodeBitmap = getQrCodeBitmap(sharePref.getString(Constant.PREF_SISWA_CODE).toString())
         binding.QRNis.setImageBitmap(qrCodeBitmap)
     }
 

@@ -6,6 +6,7 @@ data class StudentData(
 
 data class Student(
     val name: String,
+    val code: String,
     val nis: String,
     val gender: String,
     val image: String,
