@@ -1,2 +1,2 @@
 # ZieRules
-Aplikasi Untuk Mencatat Pelanggaran,Prestasi dan Tugas Siswa/i di Smakzie
+Aplikasi Untuk Tracking Pelanggaran, Prestasi dan Tugas Siswa/i di Smakzie
